@@ -11,23 +11,29 @@ class BowlingGame(object):
 		print self.rolls
 		total_score = 0
 		frame_index = 0
-		for pin in self.rolls:
-			if frame_index < 20:
-				if self.is_strike(frame_index):
-					print "strike frame_index : %d" % frame_index
-					total_score += 10 + self.get_bonus_strike_point(frame_index)
-					frame_index += 1
-				if self.is_spare(frame_index):
-					print "spare frame_index : %d" % frame_index
-					total_score += 10 + self.get_bonus_spare_point(frame_index)
-					frame_index += 2
+
+		for i in range(1, 11):
+			if self.is_strike(frame_index):
+				print "strike frame_index : %d" % frame_index
+				total_score += 10 + self.get_bonus_strike_point(frame_index)
+				frame_index += 1
+			elif self.is_spare(frame_index):
+				print "spare frame_index : %d" % frame_index
+				total_score += 10 + self.get_bonus_spare_point(frame_index)
+				frame_index += 2
+			else:
+				if self.is_ten_frame(i):
+					total_score += self.rolls[frame_index] + self.rolls[frame_index+1]
 				else:
-					print "etc frame_index : %d" % frame_index
 					total_score += self.rolls[frame_index]
-					frame_index += 1
+				frame_index += 1				
 		return total_score
 
-	def is_strike(self, frame_index):
+	def is_ten_frame(self, frame):
+		return frame == 10
+
+
+	def is_strike(self, frame_index):		
 		return self.rolls[frame_index] == 10
 
 	def get_bonus_strike_point(self, frame_index):

@@ -40,6 +40,17 @@ def test_roll_strike_strike():
 	game.roll(10)
 	assert_equals(game.get_total_score(), 30)
 	game.roll(8)
-	assert_equals(game.get_total_score(), 46)
+	assert_equals(game.get_total_score(), 54)
 	game.roll(1)
 	assert_equals(game.get_total_score(), 56)
+
+def test_roll_ten_frame():
+	game = BowlingGame()
+	for i in range(0, 12):
+		game.roll(10)
+	assert_equals(game.get_total_score(), 300)
+
+	game = BowlingGame()
+	for i in range(0, 11):
+		game.roll(3)
+	assert_equals(game.get_total_score(), 33)
