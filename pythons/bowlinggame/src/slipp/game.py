@@ -8,24 +8,23 @@ class BowlingGame(object):
 		self.current_rolls += 1
 	
 	def get_total_score(self):
-		print self.rolls
 		total_score = 0
 		frame_index = 0
 
 		for i in range(1, 11):
-			print "frame no : %d" % i
+			print ("frame no : %d" %i)
 			if self.is_strike(frame_index):				
 				total_score += 10 + self.get_bonus_strike_point(frame_index)
 				frame_index += 1
-				print "strike frame_index : %d" % frame_index
+				print ("strike frame_index : %d" %frame_index)
 			elif self.is_spare(frame_index):				
 				total_score += 10 + self.get_bonus_spare_point(frame_index)
 				frame_index += 2
-				print "spare frame_index : %d" % frame_index
+				print ("spare frame_index : %d" %frame_index)
 			else:
 				total_score += self.rolls[frame_index] + self.rolls[frame_index+1]
 				frame_index += 2
-				print "gutter frame_index : %d" % frame_index						
+				print ("gutter frame_index : %d" %frame_index)						
 		return total_score
 
 	def is_strike(self, frame_index):		
