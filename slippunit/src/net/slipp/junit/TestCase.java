@@ -8,12 +8,13 @@ public class TestCase {
 	public TestCase(String name) {
 		this.name = name;
 	}
-	
-	public void run() {
-		try {
-			Method method = this.getClass().getMethod(this.name);
-			method.invoke(this);
-		} catch (Exception e) {
-		}
+
+	protected void setUp() {
+	}
+
+	public void run() throws Exception {
+		setUp();
+		Method method = this.getClass().getMethod(this.name);
+		method.invoke(this);
 	}
 }
