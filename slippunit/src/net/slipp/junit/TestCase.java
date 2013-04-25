@@ -11,10 +11,14 @@ public class TestCase {
 
 	protected void setUp() {
 	}
+	
+	protected void tearDown() {
+	}
 
 	public void run() throws Exception {
 		setUp();
 		Method method = this.getClass().getMethod(this.name);
 		method.invoke(this);
+		tearDown();
 	}
 }

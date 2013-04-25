@@ -5,29 +5,14 @@ public class TestCaseTest extends TestCase {
 		super(name);
 	}
 
-	private WasRun test;
-
-	protected void setUp() {
-		test = new WasRun("testMethod");
-	}
-
-	public void testSetUp() throws Exception {
+	public void testTemplateMethod() throws Exception {
+		WasRun test = new WasRun("testMethod");
 		test.run();
-		assert test.wasSetUp;
-	}
-
-	public void testRun() throws Exception {
-		test.run();
-		assert test.wasRun;
+		assert ("setUp testMethod tearDown".equals(test.log));
 	}
 
 	public static void main(String[] args) throws Exception {
-		runTest("testSetUp");
-		runTest("testRun");
-	}
-
-	private static void runTest(String testMethodName) throws Exception {
-		TestCaseTest test = new TestCaseTest(testMethodName);
+		TestCaseTest test = new TestCaseTest("testTemplateMethod");
 		test.run();
 	}
 }

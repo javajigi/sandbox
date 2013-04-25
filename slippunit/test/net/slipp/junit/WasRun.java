@@ -1,18 +1,21 @@
 package net.slipp.junit;
 
 public class WasRun extends TestCase {
-	boolean wasRun = false;
-	boolean wasSetUp = false;
+	String log = "";
 	
 	public WasRun(String name) {
 		super(name);
 	}
 	
 	protected void setUp() {
-		wasSetUp = true;
+		log = "setUp ";
 	}
 	
 	public void testMethod() {
-		this.wasRun = true;
+		log += "testMethod ";
+	}
+	
+	protected void tearDown() {
+		log += "tearDown";
 	}
 }
