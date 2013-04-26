@@ -22,10 +22,18 @@ public class TestCaseTest extends TestCase {
 		TestResult result = test.run();
 		assert ("1 run, 1 failed".equals(result.summary()));		
 	}
+	
+	public void testFailedResultFormatting() throws Exception {
+		TestResult result = new TestResult();
+		result.testStarted();
+		result.testFailed();
+		assert ("1 run, 1 failed".equals(result.summary()));
+	}
 
 	public static void main(String[] args) throws Exception {
 		runTest("testTemplateMethod");
 		runTest("testResult");
+		runTest("testFailedResultFormatting");
 		runTest("testFailedResult");
 	}
 

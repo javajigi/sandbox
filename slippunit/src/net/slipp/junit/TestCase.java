@@ -11,7 +11,7 @@ public class TestCase {
 
 	protected void setUp() {
 	}
-	
+
 	protected void tearDown() {
 	}
 
@@ -19,8 +19,12 @@ public class TestCase {
 		TestResult result = new TestResult();
 		result.testStarted();
 		setUp();
-		Method method = this.getClass().getMethod(this.name);
-		method.invoke(this);
+		try {
+			Method method = this.getClass().getMethod(this.name);
+			method.invoke(this);
+		} catch (Exception e) {
+			result.testFailed();
+		}
 		tearDown();
 		return result;
 	}
