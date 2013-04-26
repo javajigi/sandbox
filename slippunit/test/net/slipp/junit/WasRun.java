@@ -15,6 +15,10 @@ public class WasRun extends TestCase {
 		log += "testMethod ";
 	}
 	
+	public void testBrokenMethod() {
+		throw new UnsupportedOperationException();
+	}
+	
 	protected void tearDown() {
 		log += "tearDown";
 	}
