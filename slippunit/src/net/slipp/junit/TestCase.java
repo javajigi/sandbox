@@ -15,17 +15,16 @@ public class TestCase {
 	protected void tearDown() {
 	}
 
-	public TestResult run() throws Exception {
-		TestResult result = new TestResult();
+	public void run(TestResult result) throws Exception {
 		result.testStarted();
 		setUp();
 		try {
 			Method method = this.getClass().getMethod(this.name);
 			method.invoke(this);
 		} catch (Exception e) {
+			e.printStackTrace();
 			result.testFailed();
 		}
 		tearDown();
-		return result;
 	}
 }
