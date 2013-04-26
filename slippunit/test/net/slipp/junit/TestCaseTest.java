@@ -40,17 +40,22 @@ public class TestCaseTest extends TestCase {
 		TestSuite suite = new TestSuite();
 		suite.add(new WasRun("testMethod"));
 		suite.add(new WasRun("testBrokenMethod"));
-		TestResult result = suite.run();
+		suite.run(result);
+		assert ("2 run, 1 failed".equals(result.summary()));
+	}
+	
+	public void testAddTestSuite() throws Exception {
+		TestSuite suite = new TestSuite();
+		suite.addTestSuite(WasRun.class);
+		suite.run(result);
 		assert ("2 run, 1 failed".equals(result.summary()));
 	}
 
 	public static void main(String[] args) throws Exception {
 		TestSuite suite = new TestSuite();
-		suite.add(new TestCaseTest("testTemplateMethod"));
-		suite.add(new TestCaseTest("testResult"));
-		suite.add(new TestCaseTest("testFailedResultFormatting"));
-		suite.add(new TestCaseTest("testFailedResult"));
-		suite.add(new TestCaseTest("testSuite"));
-		suite.run();
+		suite.addTestSuite(TestCaseTest.class);
+		TestResult result = new TestResult();
+		suite.run(result);
+		assert ("6 run, 0 failed".equals(result.summary()));
 	}
 }

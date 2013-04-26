@@ -2,7 +2,7 @@ package net.slipp.junit;
 
 import java.lang.reflect.Method;
 
-public class TestCase {
+public class TestCase implements Test {
 	private String name;
 
 	public TestCase(String name) {
