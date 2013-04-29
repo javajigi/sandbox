@@ -2,7 +2,7 @@ package net.slipp.junit;
 
 import java.lang.reflect.Method;
 
-public class TestCase implements Test {
+public class TestCase extends Assert implements Test {
 	private String name;
 
 	public TestCase(String name) {
@@ -26,17 +26,5 @@ public class TestCase implements Test {
 			result.testFailed();
 		}
 		tearDown();
-	}
-	
-	public static void assertEquals(Object expected, Object actual) {
-		if (expected == null && actual == null) {
-			return;
-		}
-		
-		if (expected != null && expected.equals(actual)) {
-			return;
-		}
-		
-		throw new AssertionFailedError();
 	}
 }

@@ -15,9 +15,12 @@ public class AssertTest extends TestCase {
 	}
 	
 	public void testAssertNotEquals() {
-		Object o= new Object();
-		Object o2 = new Object();
-		assertEquals(o, o2);
+ 		try {
+     		assertEquals(new Object(), new Object());
+ 		} catch (AssertionFailedError e) {
+ 			return;
+  		}
+ 		fail();
 	}
 	
 	public static void main(String[] args) throws Exception {
@@ -25,6 +28,6 @@ public class AssertTest extends TestCase {
 		suite.addTestSuite(AssertTest.class);
 		TestResult result = new TestResult();
 		suite.run(result);
-		TestCase.assertEquals("3 run, 1 failed", result.summary());
+		Assert.assertEquals("3 run, 0 failed", result.summary());
 	}
 }

@@ -56,6 +56,6 @@ public class TestCaseTest extends TestCase {
 		suite.addTestSuite(TestCaseTest.class);
 		TestResult result = new TestResult();
 		suite.run(result);
-		TestCase.assertEquals("6 run, 0 failed", result.summary());
+		Assert.assertEquals("6 run, 0 failed", result.summary());
 	}
 }
