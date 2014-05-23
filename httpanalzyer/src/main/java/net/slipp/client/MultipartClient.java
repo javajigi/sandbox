@@ -14,15 +14,15 @@ import org.apache.http.impl.client.DefaultHttpClient;
 public class MultipartClient {
 	public static void main(String[] args) throws Exception {
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://localhost:8080/");
+		HttpPost httppost = new HttpPost("http://localhost:8000/");
 
 		FileBody bin = new FileBody(new File("D:\\next-workspace\\hudy-workspace\\sandbox\\httpanalzyer\\pom.xml"));
 		StringBody comment = new StringBody("Filename: pom.xml");
 
-//		MultipartEntity reqEntity = new MultipartEntity();
-//		reqEntity.addPart("bin", bin);
-//		reqEntity.addPart("comment", comment);
-//		httppost.setEntity(reqEntity);
+		MultipartEntity reqEntity = new MultipartEntity();
+		reqEntity.addPart("bin", bin);
+		reqEntity.addPart("comment", comment);
+		httppost.setEntity(reqEntity);
 
 		HttpResponse response = httpclient.execute(httppost);
 		HttpEntity resEntity = response.getEntity();
