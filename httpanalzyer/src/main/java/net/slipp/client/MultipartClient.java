@@ -14,9 +14,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 public class MultipartClient {
 	public static void main(String[] args) throws Exception {
 		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://localhost:8000/");
+		HttpPost httppost = new HttpPost("http://localhost:5000/");
 
-		FileBody bin = new FileBody(new File("D:\\next-workspace\\hudy-workspace\\sandbox\\httpanalzyer\\pom.xml"));
+		FileBody bin = new FileBody(new File("pom.xml"));
 		StringBody comment = new StringBody("Filename: pom.xml");
 
 		MultipartEntity reqEntity = new MultipartEntity();

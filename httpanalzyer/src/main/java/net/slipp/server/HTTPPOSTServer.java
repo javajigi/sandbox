@@ -98,6 +98,7 @@ public class HTTPPOSTServer extends Thread {
 
 						while (true) {
 							currentLine = inFromClient.readLine();
+							System.out.println("boundaryLine : " + currentLine);
 							if (currentLine.indexOf("--" + boundary) != -1) {
 								filename = inFromClient.readLine().split(
 										"filename=")[1].replaceAll("\"", "");
