@@ -1,32 +1,39 @@
 #!/bin/bash
 
-WORKSPACE=~/codesquad/workspace
-cd $WORKSPACE
+current_dir=$(pwd)
+echo "current dir : $current_dir"
 
 project_name=java-racingcar
-if [ ! -d "$project_name" ]; then
-  git clone https://github.com/code-squad/$project_name.git
-fi
+workspace=~/codesquad/workspace
 
-cd $project_name
-git fetch --prune
+function clone_repository {
+  cd $workspace
 
-function exist_remote_branch {
-  remote_branch_name=$(git branch -r | grep origin/$1)
-  echo $remote_branch_name 
+  if [ ! -d "$project_name" ]; then
+    git clone https://github.com/code-squad/$project_name.git
+  fi
+}
+
+function sync_branch {
+  cd $workspace/$project_name
+  git fetch --prune
 }
 
 function create_branch {
-  branch_name=$(exist_remote_branch $1)
+  branch_name=$(git branch -r | grep origin/$1)
   echo "branch name : $branch_name"
   if [ ! "$branch_name" ]; then
-    echo "create local branch"
+    echo "create $1 local branch"
     git checkout -b $1 origin/master
 
-    echo "push branch"
+    echo "push $1 branch"
     git push --set-upstream origin $1
   fi
 }
 
-create_branch sanjigi
+clone_repository
+sync_branch
 
+while read github_id; do    
+    create_branch $github_id   
+done < $current_dir/$project_name.txt
