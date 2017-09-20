@@ -3,19 +3,19 @@
 current_dir=$(pwd)
 echo "current dir : $current_dir"
 
-project_name=java-racingcar
 workspace=~/codesquad/workspace
 
 function clone_repository {
   cd $workspace
 
-  if [ ! -d "$project_name" ]; then
-    git clone https://github.com/code-squad/$project_name.git
+  if [ ! -d "$1" ]; then
+    git clone https://github.com/code-squad/$1.git
   fi
 }
 
 function sync_branch {
-  cd $workspace/$project_name
+  echo "sync $1 from remote to local"
+  cd $workspace/$1
   git fetch --prune
 }
 
@@ -31,9 +31,14 @@ function create_branch {
   fi
 }
 
-clone_repository
-sync_branch
+function create_branches {
+  while read github_id; do    
+      create_branch $github_id   
+  done < $current_dir/$1.txt
+}
 
-while read github_id; do    
-    create_branch $github_id   
-done < $current_dir/$project_name.txt
+while read project_id; do
+  clone_repository $project_id
+  sync_branch $project_id
+  create_branches $project_id
+done < $current_dir/projects.txt
