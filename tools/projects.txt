@@ -1,2 +1,7 @@
 java-racingcar
 java-lotto
+java-bowling
+java-chess
+java-ims
+java-was
+java-trello
