@@ -4,4 +4,5 @@ java-bowling
 java-chess
 java-ims
 java-was
+java-framework
 java-trello
