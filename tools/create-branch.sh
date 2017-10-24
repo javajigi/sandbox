@@ -35,6 +35,8 @@ function create_branches {
   while read github_id; do    
       create_branch $github_id   
   done < $current_dir/$1.txt
+
+  git checkout master
 }
 
 while read project_id; do

@@ -6,4 +6,3 @@ java-ims
 java-was
 java-framework
 java-trello
-java-algorithm
