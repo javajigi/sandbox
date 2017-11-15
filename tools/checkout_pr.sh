@@ -35,7 +35,7 @@ function fetch_reset {
 }
 
 if [ ! "$1" ]; then
-  echo "sync할 url 경로를 입력하세요"
+  echo "checkout할 pull request 경로를 입력하세요"
   exit
 fi
 
