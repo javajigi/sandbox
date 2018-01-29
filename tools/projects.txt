@@ -1,5 +1,6 @@
 java-racingcar
 java-ladder
+java-coordinate
 java-lotto
 java-bowling
 java-chess
