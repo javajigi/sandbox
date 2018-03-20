@@ -6,6 +6,6 @@ java-bowling
 java-chess
 java-ims
 java-was
-java-qna
+java-qna-atdd
 java-framework
 java-trello
