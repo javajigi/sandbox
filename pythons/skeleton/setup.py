@@ -8,7 +8,7 @@ config = {
     'author': 'javajigi',
     'url': 'URL to get it at.',
     'download_url': 'Where to download it.',
-    'author_email': 'My email.',
+    'author_email': 'javajigi@gmail.com',
     'version': '0.1',
     'install_requires': ['nose'],
     'packages': ['NAME'],
