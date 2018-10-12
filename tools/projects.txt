@@ -3,9 +3,10 @@ java-ladder
 java-coordinate
 java-lotto
 java-bowling
-java-chess
-java-ims
-java-was
+java-qna
 java-qna-atdd
+java-ims
+java-chess
+java-was
 java-framework
 java-trello
